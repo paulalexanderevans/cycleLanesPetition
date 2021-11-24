@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handlebars Portfolio</title>
+</head>
+<body>
+    <h1>Paul Evans Coding Portfolio</h1>
+    <h2>Created Using Express Handlebars</h2>
+    <ul>
+        {{#projects}}
+        <div>
+        <a href="{{location}}">
+            <img src='/{{__dirname}}{{location}}/screenshot.png'><br>{{name}}</a>
+        </div>
+        {{/projects}}
+    </ul>
+    {{>button icon=true}}
+</body>
+</html>

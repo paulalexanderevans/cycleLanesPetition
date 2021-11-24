@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signers from {{city}}</title>
+</head>
+<body>
+    <h1>SIGNERS from {{city}}</h1>
+{{#each signers}}<p><a href="http://{{url}}">{{first}} {{last}}</a> {{age}} {{city}}</p>{{/each}}
+</body>
+</html>

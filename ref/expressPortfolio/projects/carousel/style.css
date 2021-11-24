@@ -1,0 +1,66 @@
+* {
+    background-color: black;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    height: 500px;
+    /* width: 100vw; */
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#container img {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    object-fit: cover;
+    transform: translateX(100%);
+}
+
+#container img.onscreen {
+    transform: translateX(0);
+    transition-property: transform;
+    transition-duration: 2s;
+}
+
+#container img.exit-left {
+    transform: translateX(-100%);
+    transition-property: transform;
+    transition-duration: 2s;
+}
+
+#footer {
+    height: auto;
+    width: 50%;
+    margin: 0;
+    position: relative;
+    padding: 5px;
+    right: 0px;
+}
+
+#dots {
+    bottom: 20px; /* bottom is not a property that work automatically, it must be combined with position :absolte;  */
+    position: absolute;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    /* background-color: #fff; */
+    margin: 0 5px;
+    background-color: transparent;
+}
+
+.on {
+    background-color: white;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petition</title>
+</head>
+<body>
+    <h1>SIGN OUR PETITION FOR MAKING BERLIN CYCLE LANES SMOOTH, SAFE AND KEEPING THEM WELL MAINTAINED</h1>
+            <form method="POST">
+            <canvas id="canvas" width="600px" height="100px" placeholder="sign here"></canvas>
+           <input id= "signature" name="signature" type="hidden">  {{!-- Used to store and collect digital signature--}}
+           <br>
+           <input id="clear" type="button" value="CLEAR">
+           <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button id="submit" type="submit">Go</button>
+            </form>
+            </html>
+            <script src="canvas.js"></script>
+</body>
+</html>

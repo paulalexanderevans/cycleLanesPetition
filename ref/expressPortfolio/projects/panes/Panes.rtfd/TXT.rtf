@@ -1,0 +1,160 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf610
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 Monaco;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red36\green62\blue62;\red36\green62\blue62;\red135\green135\blue135;
+\red193\green193\blue193;\red217\green96\blue103;\red109\green188\blue135;\red191\green131\blue194;\red88\green196\blue193;
+\red234\green121\blue57;\red255\green255\blue255;\red245\green186\blue68;}
+{\*\expandedcolortbl;;\cssrgb\c18431\c30980\c30980;\cssrgb\c18431\c30980\c30980;\cssrgb\c60000\c60000\c60000;
+\cssrgb\c80000\c80000\c80000;\cssrgb\c88627\c46667\c47843;\cssrgb\c49412\c77647\c60000;\cssrgb\c80000\c60000\c80392;\cssrgb\c40392\c80392\c80000;
+\cssrgb\c94118\c55294\c28627;\cssrgb\c100000\c100000\c100000;\cssrgb\c97255\c77255\c33333;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl840\sa482\partightenfactor0
+
+\f0\b\fs72 \cf2 \expnd0\expndtw0\kerning0
+Resizable Panes\
+\pard\pardeftab720\sl460\partightenfactor0
+
+\b0\fs40 \cf2 \
+\pard\pardeftab720\sl520\sa400\partightenfactor0
+\cf2 Lots of sites seem to have resizable panes these days. They're often used to show before and after photos with both images staying the same size as the user drags the bar to reveal more of one photo and less of the other. Lots of UIs also feature resizable panes in which the content reflows as the pane it is in grows or shrinks. Let's attempt the first variety, the one with images that do not resize. You can use any two images you want.\
+You'll want to detect mousedown events on the bar that sits on top of the images. After a mousedown (but before a mouseup), the bar should follow the mouse pointer on the x axis but never move out of the area defined by the left edge and right edge of the images. As the bar moves, the visible portions of the images should change correspondingly.\
+\
+\
+Tips.\
+- contain the images within a container with position relative\
+- the images need to be position absolute so that they sit on top of one another\
+- one of the images needs to be contained within another container (with the container that contains both) (the upper pic) the overflow of this container need to have overflow: hidden. This container needs to be resizable (without affecting the size of the image within.\
+- use mouse tracking as per the mouse follow DOM exercise\
+Don\'92t listen for mouseMove until the mouse is clicked and stop listening for mouseMove on mouseUp\
+- clientX - where the mouse is on the window, offsetX - where the mouse is within a given container and pageX - where to mouse is on the page.\
+- for this exercise pageX could be used but must be used in conjunction with some maths to give to correct co-ordinates\
+- ignore the mouse event when the cursor goes out of range\
+Set the width of the container div and position the divider bar to the position of the mouse \
+- us z-index to set on above the other\
+\pard\pardeftab720\sl468\sa360\partightenfactor0
+
+\b\fs36 \cf3 \outl0\strokewidth0 \strokec3 Spiced Panes Code\
+\pard\pardeftab720\sl320\sa140\partightenfactor0
+
+\i\fs28 \cf3 index.html
+\i0 \
+\pard\pardeftab720\sl600\partightenfactor0
+
+\f1\b0\fs40 \cf4 \cb3 \strokec4 <!doctype html>\cf5 \strokec5 \
+<\cf6 \strokec6 html\cf5 \strokec5 >\
+<\cf6 \strokec6 head\cf5 \strokec5 >\
+    <\cf6 \strokec6 title\cf5 \strokec5 >Fun</\cf6 \strokec6 title\cf5 \strokec5 >\
+    <\cf6 \strokec6 link rel\cf5 \strokec5 ="\cf7 \strokec7 stylesheet\cf5 \strokec5 "\cf6 \strokec6  href\cf5 \strokec5 ="\cf7 \strokec7 stylesheet.css\cf5 \strokec5 ">\
+</\cf6 \strokec6 head\cf5 \strokec5 >\
+<\cf6 \strokec6 body\cf5 \strokec5 >\
+    <\cf6 \strokec6 div id\cf5 \strokec5 ="\cf7 \strokec7 box\cf5 \strokec5 ">\
+        <\cf6 \strokec6 div id\cf5 \strokec5 ="\cf7 \strokec7 pane1\cf5 \strokec5 "\cf6 \strokec6  class\cf5 \strokec5 ="\cf7 \strokec7 pane\cf5 \strokec5 "><\cf6 \strokec6 img src\cf5 \strokec5 ="\cf7 \strokec7 parthenon.jpg\cf5 \strokec5 "></\cf6 \strokec6 div\cf5 \strokec5 >\
+        <\cf6 \strokec6 div id\cf5 \strokec5 ="\cf7 \strokec7 pane2\cf5 \strokec5 "\cf6 \strokec6  class\cf5 \strokec5 ="\cf7 \strokec7 pane\cf5 \strokec5 "><\cf6 \strokec6 img src\cf5 \strokec5 ="\cf7 \strokec7 code.png\cf5 \strokec5 "></\cf6 \strokec6 div\cf5 \strokec5 >\
+        <\cf6 \strokec6 div id\cf5 \strokec5 ="\cf7 \strokec7 slide\cf5 \strokec5 "></\cf6 \strokec6 div\cf5 \strokec5 >\
+    </\cf6 \strokec6 div\cf5 \strokec5 >\
+    <\cf6 \strokec6 script src\cf5 \strokec5 ="\cf7 \strokec7 https://code.jquery.com/jquery-3.1.0.min.js\cf5 \strokec5 "></\cf6 \strokec6 script\cf5 \strokec5 >\
+    <\cf6 \strokec6 script src\cf5 \strokec5 ="\cf7 \strokec7 script.js\cf5 \strokec5 "></\cf6 \strokec6 script\cf5 \strokec5 >\
+</\cf6 \strokec6 body\cf5 \strokec5 >\
+</\cf6 \strokec6 html\cf5 \strokec5 >
+\f2 \cf3 \strokec3 \
+\pard\pardeftab720\sl320\sa140\partightenfactor0
+
+\f0\i\b\fs28 \cf3 \cb1 script.js
+\i0 \
+\pard\pardeftab720\sl600\partightenfactor0
+
+\f1\b0\fs40 \cf5 \cb3 \strokec5 (\cf8 \strokec8 function\cf5 \strokec5 () \{\
+    \cf8 \strokec8 var\cf5 \strokec5  boxX, boxWidth, offset;\
+    \cf8 \strokec8 var\cf5 \strokec5  slide \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 $\cf5 \strokec5 (\cf7 \strokec7 '#slide'\cf5 \strokec5 );\
+    \cf8 \strokec8 var\cf5 \strokec5  box \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 $\cf5 \strokec5 (\cf7 \strokec7 '#box'\cf5 \strokec5 );\
+    \cf8 \strokec8 var\cf5 \strokec5  pane1 \cf9 \strokec9 =\cf5 \strokec5  \cf10 \strokec10 $\cf5 \strokec5 (\cf7 \strokec7 '#pane1'\cf5 \strokec5 );\
+\
+    slide.\cf10 \strokec10 on\cf5 \strokec5 (\cf7 \strokec7 'mousedown'\cf5 \strokec5 , \cf8 \strokec8 function\cf5 \strokec5 (\cf11 \strokec11 e\cf5 \strokec5 ) \{\
+        boxX \cf9 \strokec9 =\cf5 \strokec5  box.\cf10 \strokec10 offset\cf5 \strokec5 ().left;\
+        boxWidth \cf9 \strokec9 =\cf5 \strokec5  box.\cf10 \strokec10 outerWidth\cf5 \strokec5 ();\
+        \cf8 \strokec8 var\cf5 \strokec5  slideX \cf9 \strokec9 =\cf5 \strokec5  slide.\cf10 \strokec10 position\cf5 \strokec5 ().left;\
+        \cf8 \strokec8 var\cf5 \strokec5  pointerX \cf9 \strokec9 =\cf5 \strokec5  e.clientX \cf9 \strokec9 -\cf5 \strokec5  boxX;\
+        offset \cf9 \strokec9 =\cf5 \strokec5  pointerX \cf9 \strokec9 -\cf5 \strokec5  slideX;\
+        box.\cf10 \strokec10 on\cf5 \strokec5 (\cf7 \strokec7 'mousemove'\cf5 \strokec5 , drag);\
+        e.\cf10 \strokec10 preventDefault\cf5 \strokec5 ();\
+    \});\
+\
+    \cf10 \strokec10 $\cf5 \strokec5 (document).\cf10 \strokec10 on\cf5 \strokec5 (\cf7 \strokec7 'mouseup'\cf5 \strokec5 , \cf8 \strokec8 function\cf5 \strokec5 () \{\
+        box.\cf10 \strokec10 off\cf5 \strokec5 (\cf7 \strokec7 'mousemove'\cf5 \strokec5 );\
+    \});\
+\
+    \cf8 \strokec8 function\cf5 \strokec5  \cf10 \strokec10 drag\cf5 \strokec5 (\cf11 \strokec11 e\cf5 \strokec5 ) \{\
+        \cf8 \strokec8 if\cf5 \strokec5  (e.clientX \cf9 \strokec9 >\cf5 \strokec5  boxX \cf9 \strokec9 +\cf5 \strokec5  boxWidth) \{\
+            \cf8 \strokec8 return\cf5 \strokec5 ;\
+        \}\
+        \cf8 \strokec8 if\cf5 \strokec5  (e.clientX \cf9 \strokec9 <\cf5 \strokec5  boxX) \{\
+            \cf8 \strokec8 return\cf5 \strokec5 ;\
+        \}\
+        \cf8 \strokec8 var\cf5 \strokec5  px \cf9 \strokec9 =\cf5 \strokec5  e.clientX \cf9 \strokec9 -\cf5 \strokec5  boxX \cf9 \strokec9 -\cf5 \strokec5  offset \cf9 \strokec9 +\cf5 \strokec5  \cf7 \strokec7 'px'\cf5 \strokec5 ;\
+        slide.\cf10 \strokec10 css\cf5 \strokec5 (\{\
+            left\cf9 \strokec9 :\cf5 \strokec5  px\
+        \});\
+        pane1.\cf10 \strokec10 css\cf5 \strokec5 (\{\
+            width\cf9 \strokec9 :\cf5 \strokec5  px\
+        \});\
+    \}\
+\
+\})();
+\f2 \cf3 \strokec3 \
+\pard\pardeftab720\sl320\sa140\partightenfactor0
+
+\f0\i\b\fs28 \cf3 \cb1 stylesheet.css
+\i0 \
+\pard\pardeftab720\sl600\partightenfactor0
+
+\f1\b0\fs40 \cf8 \cb3 \strokec8 *\cf5 \strokec5  \{\
+    \cf12 \strokec12 box-sizing\cf5 \strokec5 : border-box;\
+\}\
+\
+\cf8 \strokec8 body\cf5 \strokec5  \{\
+    \cf12 \strokec12 margin\cf5 \strokec5 : 0;\
+\}\
+\
+\cf8 \strokec8 #box\cf5 \strokec5  \{\
+    \cf12 \strokec12 width\cf5 \strokec5 : 80%;\
+    \cf12 \strokec12 max-width\cf5 \strokec5 : 1000px;\
+    \cf12 \strokec12 margin\cf5 \strokec5 : 20px auto;\
+    \cf12 \strokec12 height\cf5 \strokec5 : 450px;\
+    \cf12 \strokec12 position\cf5 \strokec5 : relative;\
+\}\
+\
+\cf8 \strokec8 .pane\cf5 \strokec5  \{\
+    \cf12 \strokec12 width\cf5 \strokec5 : 100%;\
+    \cf12 \strokec12 height\cf5 \strokec5 : 100%;\
+    \cf12 \strokec12 position\cf5 \strokec5 : absolute;\
+    \cf12 \strokec12 top\cf5 \strokec5 : 0;\
+    \cf12 \strokec12 left\cf5 \strokec5 : 0;\
+    \cf12 \strokec12 overflow\cf5 \strokec5 : hidden;\
+\}\
+\
+\cf8 \strokec8 #pane1\cf5 \strokec5   \{\
+    \cf12 \strokec12 z-index\cf5 \strokec5 : 100;\
+    \cf12 \strokec12 background\cf5 \strokec5 : #cc6600;\
+    \cf12 \strokec12 width\cf5 \strokec5 : 50%;\
+\}\
+\
+\cf8 \strokec8 #pane2\cf5 \strokec5  \{\
+    \cf12 \strokec12 background\cf5 \strokec5 : #ffcc00;\
+\}\
+\
+\cf8 \strokec8 #slide\cf5 \strokec5  \{\
+    \cf12 \strokec12 z-index\cf5 \strokec5 : 200;\
+    \cf12 \strokec12 position\cf5 \strokec5 : absolute;\
+    \cf12 \strokec12 top\cf5 \strokec5 : 0;\
+    \cf12 \strokec12 left\cf5 \strokec5 : \cf10 \strokec10 calc\cf5 \strokec5 (50% - 5px);\
+    \cf12 \strokec12 width\cf5 \strokec5 : 10px;\
+    \cf12 \strokec12 height\cf5 \strokec5 : 100%;\
+    \cf12 \strokec12 background\cf5 \strokec5 : #666;\
+    \cf12 \strokec12 border-left\cf5 \strokec5 : 1px #333 solid;\
+    \cf12 \strokec12 border-right\cf5 \strokec5 : 1px #333 solid;\
+    \cf12 \strokec12 cursor\cf5 \strokec5 : pointer;\
+\
+\}
+\f2 \cf3 \strokec3 \
+}

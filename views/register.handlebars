@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petition</title>
+</head>
+<body>
+    <h1>Please create an account by entering your email address and choosing a password</h1>
+            <form method="POST">
+            <h3>First Name</h3>
+            <input type="text" name="first" placeholder="First Name">
+            <h3>Surname</h3>
+            <input type="text" name="last" placeholder="Surname">
+             <h3>Email Address</h3>
+            <input type="text" name="email" placeholder="Email">
+             <h3>Password</h3>
+            <input type="password" name="password" placeholder="Password">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button id="submit" type="submit">Register</button>
+            </form>
+            </html>
+            {{!-- <script src="canvas.js"></script> --}}
+</body>
+</html>

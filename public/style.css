@@ -1,0 +1,36 @@
+#canvas {
+    background-color: #ffffff;
+    border: 2px solid black;
+    opacity: 100%;
+}
+body {
+    font-family: "Public Sans", sans-serif;
+}
+
+.background {
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
+.container {
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+    z-index: 0;
+    background-color: #ffffff;
+    opacity: 70%;
+}
+
+#footer {
+    bottom: 0;
+    position: fixed;
+    text-decoration: #ffffff;
+    align-self: flex-end;
+}

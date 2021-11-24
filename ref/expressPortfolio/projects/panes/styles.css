@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.page {
+    top: 0;
+    left: 0;
+    background: #002542;
+    padding: 80px;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-content: center;
+    z-index: 1;
+    /* flex-flow: wrap; */
+    /* align-items: center; */
+    /* position: absolute; */
+}
+
+.container {
+    width: 800px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.foto {
+    width: 800px;
+    height: auto;
+    position: absolute;
+}
+
+.fotoContainer {
+    width: 400px;
+    height: 540px;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.painting {
+    width: 800px;
+    height: 540px;
+    position: absolute;
+    /* visibility: hidden; */
+}
+
+.slider {
+    width: 10px;
+    height: 540px;
+    position: absolute;
+    background: white;
+    opacity: 50%;
+    cursor: pointer;
+    z-index: 200;
+    left: calc(50% - 5px);
+}

@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    /* background-color: blanchedalmond; */
+    font-family: "Courier New", Courier, monospace;
+    padding: 0;
+}
+
+body {
+    margin: 10px;
+}
+
+.highlight {
+    background-color: mintcream;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.container {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    padding: 10px;
+}
+
+.results {
+    background-color: #ffffff;
+    opacity: 90%;
+}
+
+img {
+    height: auto;
+    width: 100vw;
+    position: fixed;
+}
+/*  */
+
+/* if I want to move something to the left, we can use the "left" property
+"left" dictates where an object sits relative to the left hand edge of the parent element
+The smaller the value, the closer to the left the object will be. A negative value will move the object off the screen by x pixels
+To (continually) move an object left (off the left hand side of the screen) we need to write a java function that continually decreases the value of "left"*/
+
+/* we can tell when an element is completely off screen when the "left" value (negative) is equal to the elements width (positive) */

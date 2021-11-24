@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+</head>
+<body>
+    <h1>THANK YOU</h1>{{{first}}} {{{last}}} for signing our petition for making Berlin cycle lanes smooth, safe and keeping them well maintained</h2>
+    <img src={{{signature}}} alt="{{{first}}} {{{last}}}'s signature" width="600" height="100">
+     <h3> <a href="/signers">See all{{!-- {{{rowCount}}} --}} signers</a></h3>
+     <h3> <a href="/edit">Edit your profile</a></h3>
+     <form method="POST"><input type="hidden" name="_csrf" value="{{csrfToken}}">
+     <button class="delete" type="submit">Delete your signature</button></form></h3>
+</body>
+</html>

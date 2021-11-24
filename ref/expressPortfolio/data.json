@@ -1,0 +1,8 @@
+[
+    { "name": "Carousel", "location": "carousel" },
+    { "name": "Connect Four", "location": "connectFour" },
+    { "name": "Follow the Random Coloured Ball", "location": "followTheBall" },
+    { "name": "Gobstopper", "location": "gobstopper" },
+    { "name": "Incremental Search", "location": "incrementalSearch" },
+    { "name": "Panes", "location": "panes" }
+]

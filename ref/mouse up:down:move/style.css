@@ -1,0 +1,12 @@
+.ball {
+    background-color: lightseagreen;
+    border-radius: 50%;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+}
+.body {
+    background-color: lightseagreen;
+    height: 100%;
+    width: 100%;
+}
